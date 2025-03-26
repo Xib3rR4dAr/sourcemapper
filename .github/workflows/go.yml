@@ -42,3 +42,16 @@ jobs:
         with:
           name: sourcemapper-binary
           path: sourcemapper/sourcemapper
+
+  download-artifact:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download built artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: sourcemapper-binary
+
+      - name: Show downloaded artifact
+        run: ls -l
